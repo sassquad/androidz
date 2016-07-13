@@ -1,0 +1,186 @@
+   10 REM Androidz title page and setup
+   20 REM By Stephen Scott
+   30 REM 9th August, 1993
+   40 REM (c) Acorn Computing
+   50 MODE7
+   60 VDU23;8202;0;0;0;
+   70 REM
+   80 REM
+   90 REM
+  100 PROCappear1(11,11,"Credits ? (Y/N)",135)
+  110 REPEAT:A$=GET$:UNTILA$="Y"ORA$="y"ORA$="N"ORA$="n"
+  120 IFA$="N"ORA$="n"THENGOTO150
+  130 CLS
+  140 PROCcredits
+  150 CLS
+  160 PROCappear2(6,6,"Please select an option:",131)
+  170 PRINT''SPC5"1. Quick instructions"
+  180 PRINT''SPC5"2. Long, sprawling instructions"
+  190 PRINT''SPC5"3. Load the game"
+  200 PRINT''SPC5"4. Play something else"
+  210 REPEAT:A=GET:UNTILA=49ORA=50ORA=51ORA=52
+  220 IFA=49THENPROCsimple:GOTO260
+  230 IFA=50THENPROCnovel:GOTO260
+  240 IFA=51THENGOTO260
+  250 CLS:PRINT'"Pah! You have no taste for brilliant    games!":END
+  260 PROCenv:PAGE=&1100:CHAIN"Droid2"
+  270 END
+  280 :
+  290 DEFPROCappear1(x,y,m$,c)
+  300 FOR a=1 TO LEN(m$)
+  310 b%=ASCMID$(m$,a,1)
+  320 x1=x-5:y1=y-5:x2=x+5:y2=y+5
+  330 REPEAT
+  340 PRINTTAB(0,y)CHR$(c)
+  350 VDU31,x1,y1,32,31,x1,y2,32,31,x2,y1,32,31,x2,y2,32
+  360 x1=x1+1:x2=x2-1
+  370 y1=y1+1:y2=y2-1
+  380 VDU31,x1,y1,b%,31,x1,y2,b%,31,x2,y1,b%,31,x2,y2,b%
+  390 UNTIL x1=x AND x2=x AND y1=y AND y2=y
+  400 x=x+1
+  410 NEXT
+  420 ENDPROC
+  430 :
+  440 DEFPROCappear2(x,y,m$,c)
+  450 PRINTTAB(x-1,y)CHR$(c)
+  460 FOR a=1 TO LEN(m$)
+  470 b%=ASCMID$(m$,a,1)
+  480 y2=22
+  490 REPEAT:VDU31,x,y2,b%
+  500 VDU31,x,y2+1,32
+  510 y2=y2-1
+  520 UNTIL y2=y-1
+  530 VDU31,x,y,b%
+  540 x=x+1
+  550 NEXT
+  560 ENDPROC
+  570 :
+  580 DEFPROCappear3(x,y,m$,c)
+  590 PRINTTAB(x-1,y)CHR$(c)
+  600 FOR a=1 TO LEN(m$)
+  610 b%=ASCMID$(m$,a,1)
+  620 x2=38
+  630 REPEAT:VDU31,x2,y,b%,32
+  640 x2=x2-1
+  650 UNTIL x2=x-1
+  660 VDU31,x,y,b%
+  670 x=x+1
+  680 NEXT
+  690 ENDPROC
+  700 :
+  710 DEFPROCsimple
+  720 CLS
+  730 PRINT'CHR$134"Simple Instructions:"
+  740 PRINT'" It is the year 2002, and you are a      member of the police's Robot            Apprahension Unit (R.A.U.) whose task   it is to destroy mad robots. You have   been assigned to deal with an incident"
+  750 PRINT" at 20 factories whose robots have gone  haywire due to a power surge. You must  destroy them all with your laser gun."
+  760 PRINT'" Beware! The robots can shoot back at    you! You start with 5 lives."
+  770 PRINT'" Keys:"
+  780 PRINT'"   Z - left        S = Noise"
+  790 PRINT "   X - right       Q = Quiet"
+  800 PRINT "   P - up     Delete = Pause"
+  810 PRINT "   L - down     Copy = Unpause"
+  820 PRINT " Ret - fire"
+  830 PRINT'CHR$136"PRESS THE SPACE BAR TO LOAD THE GAME"
+  840 REPEATUNTILGET=32
+  850 ENDPROC
+  860 :
+  870 DEFPROCnovel
+  880 CLS
+  890 PRINT'CHR$134"Long winded instructions:"
+  900 PRINTTAB(10)"Any key to scroll"
+  910 VDU28,0,23,39,3
+  920 PRINT'" It is the year 2002. Robots are now     responsible for the manufacture of most household items like cars, televisions  and even furniture. The robots use a    neural network controlled by a main"
+  930 PRINT " computer. Despite all this technology,  humans still keep tabs on the           manufacturing process, dealing with     any problems which rear themselves up."
+  940 PRINT'" For any problems beyond the help of     the maintainance crew, the latest       addition to the police force - the      Robot Apprehension Unit (R.A.U.) - is   called in to deal with incidents where"
+  950 PRINT " robots go out of control due to bugs    in their programming, or short circuits in the system etc."
+  960 A=GET
+  970 PRINT'" You play the part of one of the R.A.U.  officers - a position everyone wants    to be in, due to the high salary and    the variations in the kinds of          incidents that are faced each day."
+  980 PRINT'" Because of the nature of the job, you   only get three weeks holiday at a set   period in the year. But one officer     must stay behind to deal with any calls that come in during that time. If you"
+  990 PRINT " were lucky, you would be sent some      reserve officers from another station.  However, this year it is not the case,  due to a national shortage of officers. You happened to draw the short straw,   so you are that officer."
+ 1000 A=GET
+ 1010 PRINT'" Ordinary officers cannot be drafted in  to the R.A.U. because of the shortage   so you are on your own for the next     three weeks."
+ 1020 PRINT'" It is of course Murphy's Law that the   highest number of calls asking for      R.A.U. assistance come at exactly the   same time as those three weeks..."
+ 1030 PRINT'" The three weeks are nearly over; the    rest come back from Triassic Park       tomorrow, and so you naturally think    that you won't get any more calls for   the rest of the day. But it is not the  case."
+ 1040 A=GET
+ 1050 PRINT'" A call comes in saying that a huge      power surge has knocked out the neural  networks of twenty factories nearby,    and the robots have as a result gone on the rampage, killing the maintainance"
+ 1060 PRINT " crews with the laser welding            instruments attached to their arms.     There is no-one left to shut them down, and they would run on battery power for weeks even if the computer was shut"
+ 1070 PRINT " down. The only hope is for them to be   destroyed. You have been asked to do    the job, and it is a very substantial   job, much larger than any you have come across. The media have got hold of the"
+ 1080 PRINT " situation, and will make you either a   hero or a loser depending on the final  outcome."
+ 1090 A=GET
+ 1100 PRINT''" Use the Z,X,P and L keys to move about  each factory level, killing the robots  with your single firing laser gun,      activated by pressing Return. The       robots can of course fire at you, but"
+ 1110 PRINT " they are also heat sensitive and will   home in your position if you linger     around in one place for too long. You   must use the natural cover of the       factory walls and machinery to help"
+ 1120 PRINT " evade the robots, although some         factories have less cover than others."
+ 1130 PRINT'" If you fail the task then your tally of kills is assessed by the Chief          Superintendant and his report will      appear on screen."
+ 1140 A=GET
+ 1150 PRINT'" Just think - if you complete the task   you will get your name in the papers    and be well rewarded with three weeks   at Isla Nobbler for the holiday of a    lifetime ... (eek!)"
+ 1160 PRINT'" Use S and Q to toggle the sound output  and Delete and Copy to pause and        unpause the game."
+ 1170 PRINT'" Good Luck!"
+ 1180 PRINT'''" There! Did you enjoy that read ? Not    quite the same as reading a sci-fi      novel, but it's only a silly plot for   a simple zap and blast game!"
+ 1190 PRINT'CHR$136"PRESS THE SPACE BAR TO LOAD THE GAME"
+ 1200 REPEATUNTILGET=32
+ 1210 VDU26
+ 1220 ENDPROC
+ 1230 :
+ 1240 DEFPROCenv
+ 1250 REM Walk sound
+ 1260 ENVELOPE1,4,0,0,0,5,2,14,27,80,-100,24,126,126
+ 1270 REM Ricochet
+ 1280 ENVELOPE2,1,1,-2,1,5,18,8,126,-1,-1,-8,120,90
+ 1290 REM Destroy
+ 1300 ENVELOPE3,1,-1,0,-5,0,0,0,50,-13,0,-2,108,74
+ 1310 REM End
+ 1320 ENVELOPE4,1,0,0,0,0,0,0,126,-1,0,-2,126,80
+ 1330 ENVELOPE5,1,0,0,0,0,0,0,5,-1,0,-2,100,80
+ 1340 ENVELOPE6,1,0,0,0,0,0,0,5,-1,0,-2,85,70
+ 1350 REM Laser fire
+ 1360 ENVELOPE7,129,-4,-3,0,20,10,20,127,-1,-1,-3,120,90
+ 1370 REM Death
+ 1380 ENVELOPE8,4,-4,-1,-1,20,20,20,1,0,0,0,1,1
+ 1390 REM Bell
+ 1400 ENVELOPE9,3,0,0,0,0,0,0,121,-10,-1,-2,120,120
+ 1410 ENDPROC
+ 1420 :
+ 1430 DEFPROCcredits
+ 1440 FORI%=1TO12
+ 1450 READ A%,X%,Y%,A$,C%
+ 1460 IFA%=2PROCappear2(X%,Y%,A$,C%)
+ 1470 IFA%=3PROCappear3(X%,Y%,A$,C%)
+ 1480 NEXT
+ 1490 TIME=0:REPEATUNTILTIME=300
+ 1500 CLS
+ 1510 FORI%=1TO11
+ 1520 READ A%,X%,Y%,A$,C%
+ 1530 IFA%=2PROCappear2(X%,Y%,A$,C%)
+ 1540 IFA%=3PROCappear3(X%,Y%,A$,C%)
+ 1550 NEXT
+ 1560 TIME=0:REPEATUNTILTIME=300
+ 1570 CLS
+ 1580 PROCappear1(6,11,"(C) Stephen Scott 1993, 2015",129)
+ 1590 TIME=0:REPEATUNTILTIME=300
+ 1600 CLS
+ 1610 ENDPROC
+ 1620 :
+ 1630 DATA2,10,3,"Design and Programming:",134
+ 1640 DATA3,11,5,"Stephen Scott",135
+ 1650 DATA2,10,7,"Graphic artists:",134
+ 1660 DATA3,11,9,"Stephen Scott",135
+ 1670 DATA3,11,11,"Lee Wilson",135
+ 1680 DATA3,11,12,"Graeme Scott",135
+ 1690 DATA2,10,14,"Level designs:",134
+ 1700 DATA3,11,16,"Stephen Scott",135
+ 1710 DATA3,11,18,"Graeme Scott",135
+ 1720 DATA3,11,19,"Lee Wilson",135
+ 1730 DATA3,11,20,"Neil Thomas",135
+ 1740 DATA3,11,21,"Ian Long",135
+ 1750 :
+ 1760 DATA2,10,3,"Sound effects:",134
+ 1770 DATA3,11,5,"Stephen Scott",135
+ 1780 DATA3,2,7,"and sounds from various games by",129
+ 1790 DATA3,11,9,"Mike Goldberg",135
+ 1800 DATA3,11,10,"Jon Perry",135
+ 1810 DATA2,10,12,"Title page and story:",134
+ 1820 DATA3,11,14,"Stephen Scott",135
+ 1830 DATA2,10,16,"Project commenced:",134
+ 1840 DATA3,11,18,"14th July, 1993",135
+ 1850 DATA2,10,20,"Project completed:",134
+ 1860 DATA3,11,22,"28th August, 1993",135
