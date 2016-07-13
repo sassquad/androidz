@@ -1,7 +1,7 @@
    10 REM Androidz title page and setup
    20 REM By Stephen Scott
    30 REM 9th August, 1993
-   40 REM (c) Acorn Computing
+   40 REM 
    50 MODE7
    60 VDU23;8202;0;0;0;
    70 REM
@@ -71,7 +71,7 @@
   710 DEFPROCsimple
   720 CLS
   730 PRINT'CHR$134"Simple Instructions:"
-  740 PRINT'" It is the year 2002, and you are a      member of the police's Robot            Apprahension Unit (R.A.U.) whose task   it is to destroy mad robots. You have   been assigned to deal with an incident"
+  740 PRINT'" It is the year 2002, and you are a      member of the police's Robot            Apprehension Unit (R.A.U.) whose task   it is to destroy mad robots. You have   been assigned to deal with an incident"
   750 PRINT" at 20 factories whose robots have gone  haywire due to a power surge. You must  destroy them all with your laser gun."
   760 PRINT'" Beware! The robots can shoot back at    you! You start with 5 lives."
   770 PRINT'" Keys:"
