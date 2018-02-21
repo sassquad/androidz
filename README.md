@@ -1,9 +1,9 @@
 # Androidz
 An arcade game written for the BBC Micro.
 
-![Image of Androidz](https://www.sassquad.net/images/riscos/android1.png)
-![Image of Androidz](https://www.sassquad.net/images/riscos/android2.png)
-![Image of Androidz](https://www.sassquad.net/images/riscos/android3.png)
+![Image of Androidz](https://www.sassquad.net/images/riscos/androidz1.png)
+![Image of Androidz](https://www.sassquad.net/images/riscos/androidz2.png)
+![Image of Androidz](https://www.sassquad.net/images/riscos/androidz3.png)
 
 ## Play the game online
 The game is available to play online, via the Javascript BBC Micro Emulator [jsBeeb](https://github.com/mattgodbolt/jsbeeb):
