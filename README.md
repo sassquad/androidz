@@ -1,5 +1,7 @@
 # Androidz
-An arcade game written for the BBC Micro.
+An arcade game written in 1993 for the BBC Microcomputer.
+
+*UPDATE for 2021* - a remastered version is now available. Check out the [repo](https://github.com/sassquad/androidz-redux) for more details.
 
 ![Image of Androidz](https://www.sassquad.net/images/riscos/androidz1.png)
 ![Image of Androidz](https://www.sassquad.net/images/riscos/androidz2.png)
