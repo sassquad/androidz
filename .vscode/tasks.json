@@ -1,0 +1,71 @@
+{
+    // See https://go.microsoft.com/fwlink/?LinkId=733558
+    // for the documentation about the tasks.json format
+    "version": "2.0.0",
+    "options":
+        {
+            "windows": {
+                "shell":
+                {
+                    "args": ["/C"],
+                    "executable": "cmd.exe"
+                }
+            }
+        },
+    "tasks": [
+        {
+            "label": "Android.ssd",
+            "type": "shell",
+            "command": "make",
+            "osx": {
+                "command": ". ./build.sh"
+            },
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "presentation": {
+                "echo": true,
+                "reveal": "always",
+                "focus": true,
+                "panel": "shared",
+                "showReuseMessage": true,
+                "clear": false
+            },
+            "problemMatcher": {
+                "owner": "6502",
+                "fileLocation": [
+                    "relative",
+                    "${workspaceRoot}"
+                ],
+                "pattern": {
+                    "regexp": "^(.*):(\\d+):\\s+(warning|error):\\s+(.*)$",
+                    "file": 1,
+                    "line": 2,
+                    "severity": 3,
+                    "message": 4
+                }
+            }
+        },
+        {
+            "label": "Test In Emulator",
+            "type": "shell",
+            "group": {
+                "kind": "test",
+                "isDefault": true
+            },
+            "osx": {
+                "command": ". ./testinb2.sh"
+            },
+            "windows": {
+                "command": "C:/Code/b2/build/win64.vs2019/src/b2/RelWithDebInfo/B2.exe",
+                "args": [
+                    "-0",
+                    "Android.ssd",
+                    "-b"
+                ]
+            },
+            "problemMatcher": []
+        }
+    ]
+}
