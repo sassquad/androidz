@@ -31,3 +31,7 @@ Closer examination of the code will reveal a number of GOTOs throughout, which m
 You will also notice that the actual game listing appears more compressed than the other two listings, this was done to reduce memory. I do recall that an attempt to make the code cleaner resulted in error messages concerning lack of memory, so I had to dispense with code readability.
 
 I've added the code here so that it is easier to browse for historical purposes.
+
+## How to build
+
+If you wish to build your own disc image of the game, you'll need Beebasm installed on your computer. If you are using Visual Studio Code, then you can use the Task feature to build an image via Ctrl-Shift-B. This will assemble the contents of the src folder, and create the Android.ssd image, for use in your machine, or emulator of choice.
