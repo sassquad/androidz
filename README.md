@@ -10,7 +10,7 @@ An arcade game written in 1993 for the BBC Microcomputer.
 ## Play the game online
 The game is available to play online, via the Javascript BBC Micro Emulator [jsBeeb](https://github.com/mattgodbolt/jsbeeb):
 
-https://bbc.godbolt.org/?disc=https://www.sassquad.net/downloads/Androidz.ssd&autoboot
+https://bbc.godbolt.org/?disc=https://www.sassquad.net/downloads/androidz/original/Android.ssd&autoboot
 
 ## Watch a video of the game
 
