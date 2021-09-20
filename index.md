@@ -10,11 +10,11 @@ Full instructions are provided within the game.
 ![Image of Androidz](https://www.sassquad.net/images/riscos/androidz3.png)
 
 ## Play the game online
-The game is available to play [online](https://bbc.godbolt.org/?disc=https://www.sassquad.net/downloads/androidz/original/Androidz.ssd&autoboot), via the Javascript BBC Micro Emulator [jsBeeb](https://github.com/mattgodbolt/jsbeeb):
+The game is available to play [online](https://bbc.godbolt.org/?disc=https://www.sassquad.net/downloads/androidz/original/Android.ssd&autoboot), via the Javascript BBC Micro Emulator [jsBeeb](https://github.com/mattgodbolt/jsbeeb):
 
 ## Watch a video of the game
 
-https://youtu.be/2oWKNXXIkt8
+Watch a [video playthrough](https://youtu.be/2oWKNXXIkt8) of the first few levels of the game.
 
 ## About the game
 
